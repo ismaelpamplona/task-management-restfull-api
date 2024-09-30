@@ -17,8 +17,8 @@
   - [x] Implement validation logic for the registration endpoint.
   - [x] Make the test pass by ensuring invalid input is rejected.
 
-- [ ] Hash the user's password:
+- [x] Hash the user's password:
 
-  - [ ] Write a failing test to check if the password is hashed.
-  - [ ] Implement password hashing using a suitable library (e.g., `werkzeug.security`).
-  - [ ] Make the test pass by confirming the password is hashed before saving.
+  - [x] Write a failing test to check if the password is hashed.
+  - [x] Implement password hashing using a suitable library (e.g., `werkzeug.security`).
+  - [x] Make the test pass by confirming the password is hashed before saving.

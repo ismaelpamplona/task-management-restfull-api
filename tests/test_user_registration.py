@@ -1,16 +1,9 @@
 import bcrypt
 import pytest
+from pymongo import MongoClient
 
 from app import create_app
 from app.models.user import User
-
-
-@pytest.fixture
-def client():
-    app = create_app()
-    app.config["TESTING"] = True
-    with app.test_client() as client:
-        yield client
 
 
 def test_user_registration(client):
@@ -55,15 +48,18 @@ def test_user_registration_invalid_input(client):
 
 
 def test_password_is_hashed():
-    user = User(
-        username="hasheduser", email="hasheduser@example.com", password="plainpassword"
-    )
+    user = User(username="test", email="test@example.com", password="plainpassword")
+    print(user.password)
     user.save_to_db()
 
-    inserted_user = User.find_by_email("hasheduser@example.com")
+    # Retrieve the inserted user
+    inserted_user = User.find_by_email("test@example.com")
 
     assert inserted_user is not None
+    # Check that the password is not stored in plain text
+    print(inserted_user["password"])
     assert inserted_user["password"] != "plainpassword"
+    # Check that the hashed password matches the original password using bcrypt
     assert bcrypt.checkpw(
         "plainpassword".encode("utf-8"), inserted_user["password"].encode("utf-8")
     )

@@ -10,19 +10,7 @@ from app.models.user import User
 sys.path.insert(0, abspath(dirname(dirname(__file__))))
 
 
-@pytest.fixture
-def mongo_client():
-    app = create_app()
-    app.config["TESTING"] = True
-    client = MongoClient(app.config["MONGO_URI"])
-
-    yield client
-
-    client.drop_database("task_management_test")
-    client.close()
-
-
-def test_user_model_creation(mongo_client):
+def test_user_model_creation(client):
     user = User(
         username="testuser", email="testuser@example.com", password="testpassword"
     )
