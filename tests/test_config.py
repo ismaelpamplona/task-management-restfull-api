@@ -3,8 +3,6 @@ from os.path import abspath, dirname
 
 sys.path.insert(0, abspath(dirname(dirname(__file__))))
 
-import pytest
-
 from config.config import Config
 
 
