@@ -6,7 +6,7 @@ sys.path.insert(0, abspath(dirname(dirname(__file__))))
 from config.config import Config
 
 
-def test_config_loading():
+def test_config_loading() -> None:
     assert Config.FLASK_ENV == "development"
     assert (
         Config.MONGO_URI

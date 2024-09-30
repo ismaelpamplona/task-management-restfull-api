@@ -3,9 +3,9 @@ from os.path import abspath, dirname
 
 import pytest
 
-sys.path.insert(0, abspath(dirname(dirname(__file__))))
-
 from app import create_app
+
+sys.path.insert(0, abspath(dirname(dirname(__file__))))
 
 
 @pytest.fixture
