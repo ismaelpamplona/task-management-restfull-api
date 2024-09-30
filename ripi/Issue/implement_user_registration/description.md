@@ -7,7 +7,7 @@
 
 - [ ] Create the User registration endpoint:
 
-  - [ ] Write a failing test for user registration.
+  - [x] Write a failing test for user registration.
   - [ ] Implement the logic to register a new user.
   - [ ] Make the test pass by validating user registration.
 
