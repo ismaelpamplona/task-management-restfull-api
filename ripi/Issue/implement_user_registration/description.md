@@ -11,11 +11,11 @@
   - [x] Implement the logic to register a new user.
   - [x] Make the test pass by validating user registration.
 
-- [ ] Validate the user registration input:
+- [x] Validate the user registration input:
 
-  - [ ] Write a failing test for input validation (e.g., email format, password length).
-  - [ ] Implement validation logic for the registration endpoint.
-  - [ ] Make the test pass by ensuring invalid input is rejected.
+  - [x] Write a failing test for input validation (e.g., email format, password length).
+  - [x] Implement validation logic for the registration endpoint.
+  - [x] Make the test pass by ensuring invalid input is rejected.
 
 - [ ] Hash the user's password:
 

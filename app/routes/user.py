@@ -1,3 +1,5 @@
+import re
+
 from flask import Blueprint, jsonify, request
 
 from app.models.user import User
@@ -16,6 +18,13 @@ def register_user():
         or not data.get("password")
     ):
         return jsonify({"error": "Invalid input"}), 400
+
+    email_regex = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    if not re.match(email_regex, data["email"]):
+        return jsonify({"error": "Invalid email format"}), 400
+
+    if len(data["password"]) < 6:
+        return jsonify({"error": "Password must be at least 6 characters long"}), 400
 
     user = User(
         username=data["username"], email=data["email"], password=data["password"]
