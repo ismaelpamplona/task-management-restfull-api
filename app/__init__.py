@@ -1,8 +1,7 @@
 from flask import Flask
 
+from app.routes.index import index_bp
 from config.config import Config
-
-from .routes.index import index_bp
 
 
 def create_app():
