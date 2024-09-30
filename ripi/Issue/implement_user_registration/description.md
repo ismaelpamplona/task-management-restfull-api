@@ -5,11 +5,11 @@
   - [x] Write a failing test for the User model creation.
   - [x] Implement the User model and make the test pass.
 
-- [ ] Create the User registration endpoint:
+- [x] Create the User registration endpoint:
 
   - [x] Write a failing test for user registration.
-  - [ ] Implement the logic to register a new user.
-  - [ ] Make the test pass by validating user registration.
+  - [x] Implement the logic to register a new user.
+  - [x] Make the test pass by validating user registration.
 
 - [ ] Validate the user registration input:
 
