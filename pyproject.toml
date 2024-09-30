@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "task-management-restfull-api"
+version = "0.1.0"
+description = "🐍 A RESTful API for a Task Management app built with Python, Flask, and MongoDB. Manage projects, tasks, and subtasks with features like authentication, caching, pagination, and more! Follows OOP principles, SOLID, and best practices. Designed to be fast, scalable, and developer-friendly!"
+authors = ["Ismael Pamplona"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flask = "^3.0.3"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
