@@ -5,18 +5,28 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "5000:5000"
-    environment:
-      - FLASK_ENV=development
-      - MONGO_URI=mongodb://mongo:27017/task_management
+    env_file:
+      - dev.env
     depends_on:
       - mongo
 
   mongo:
-    image: mongo:6.0
+    image: mongo:7.0
     ports:
       - "27017:27017"
+    env_file:
+      - dev.env
     volumes:
       - mongo_data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    env_file:
+      - dev.env
+    depends_on:
+      - mongo
 
 volumes:
   mongo_data:

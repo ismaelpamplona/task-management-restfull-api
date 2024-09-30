@@ -10,6 +10,16 @@
   - [x] Define the Flask service in `docker-compose.yml`.
   - [x] Define the MongoDB service in `docker-compose.yml`.
 
-- [ ] Test the setup:
-  - [ ] Start the services using `docker-compose`.
-  - [ ] Verify that the Flask app is running correctly and can connect to MongoDB.
+- [x] Test the setup:
+  - [x] Start the services using `docker-compose`.
+  - [x] Verify that the Flask app is running correctly and can connect to MongoDB.
+
+```json
+// 20240929224549
+// http://localhost:5000/check-mongo
+
+{
+  "databases": ["admin", "config", "local"],
+  "message": "Connected to MongoDB"
+}
+```
