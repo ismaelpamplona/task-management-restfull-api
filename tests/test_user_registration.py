@@ -1,6 +1,8 @@
+import bcrypt
 import pytest
 
 from app import create_app
+from app.models.user import User
 
 
 @pytest.fixture
@@ -50,3 +52,18 @@ def test_user_registration_invalid_input(client):
     )
     assert response.status_code == 400
     assert response.json["error"] == "Password must be at least 6 characters long"
+
+
+def test_password_is_hashed():
+    user = User(
+        username="hasheduser", email="hasheduser@example.com", password="plainpassword"
+    )
+    user.save_to_db()
+
+    inserted_user = User.find_by_email("hasheduser@example.com")
+
+    assert inserted_user is not None
+    assert inserted_user["password"] != "plainpassword"
+    assert bcrypt.checkpw(
+        "plainpassword".encode("utf-8"), inserted_user["password"].encode("utf-8")
+    )
