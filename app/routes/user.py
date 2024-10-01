@@ -2,6 +2,7 @@ import re
 
 import bcrypt
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import create_access_token
 
 from app.models.user import User
 
@@ -66,12 +67,9 @@ def login_user():
     ):
         return jsonify({"error": "Invalid email or password"}), 401
 
+    access_token = create_access_token(identity=user["email"])
+
     return (
-        jsonify(
-            {
-                "message": "Login successful",
-                "access_token": "mocked_token",  # replace later
-            }
-        ),
+        jsonify({"message": "Login successful", "access_token": access_token}),
         200,
     )
