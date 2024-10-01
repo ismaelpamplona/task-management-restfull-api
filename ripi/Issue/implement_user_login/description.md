@@ -8,7 +8,7 @@
 
 - [ ] Validate the user login input:
 
-  - [ ] Write a failing test for login input validation (e.g., email format, missing fields).
+  - [x] Write a failing test for login input validation (e.g., email format, missing fields).
   - [ ] Implement input validation for the login endpoint.
   - [ ] Make the test pass by ensuring invalid input is rejected.
 

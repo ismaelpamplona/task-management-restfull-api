@@ -63,3 +63,22 @@ def test_password_is_hashed():
     assert bcrypt.checkpw(
         "plainpassword".encode("utf-8"), inserted_user["password"].encode("utf-8")
     )
+
+
+def test_user_login_invalid_input(client):
+    # Test missing email
+    response = client.post("/login", json={"password": "testpassword"})
+    assert response.status_code == 400
+    assert response.json["error"] == "Invalid input"
+
+    # Test invalid email format
+    response = client.post(
+        "/login", json={"email": "invalid-email", "password": "testpassword"}
+    )
+    assert response.status_code == 400
+    assert response.json["error"] == "Invalid email format"
+
+    # Test missing password
+    response = client.post("/login", json={"email": "testuser@example.com"})
+    assert response.status_code == 400
+    assert response.json["error"] == "Invalid input"
