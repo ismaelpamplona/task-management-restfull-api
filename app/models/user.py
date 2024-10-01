@@ -35,5 +35,6 @@ class User:
         client = MongoClient(mongo_uri)
         db = client.get_database("task_management")
         user = db.users.find_one({"email": email})
+
         client.close()
         return user

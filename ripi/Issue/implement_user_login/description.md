@@ -1,10 +1,10 @@
 # implement_user_login (Issue)
 
-- [ ] Set up the User login endpoint:
+- [x] Set up the User login endpoint:
 
   - [x] Write a failing test for the user login.
-  - [ ] Implement the logic for user login.
-  - [ ] Make the test pass by validating user login.
+  - [x] Implement the logic for user login.
+  - [x] Make the test pass by validating user login.
 
 - [ ] Validate the user login input:
 
