@@ -8,7 +8,7 @@
 
 - [ ] Generate a Password Reset Token:
 
-  - [ ] Write a failing test for generating a password reset token.
+  - [x] Write a failing test for generating a password reset token.
   - [ ] Implement token generation using `itsdangerous` or a similar library.
   - [ ] Make the test pass by generating the token and sending a reset link.
 
