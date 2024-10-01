@@ -3,8 +3,10 @@ import re
 import bcrypt
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token
+from itsdangerous import URLSafeTimedSerializer
 
 from app.models.user import User
+from config.config import Config
 
 user_bp = Blueprint("user", __name__)
 
@@ -79,13 +81,18 @@ def login_user():
 def forgot_password():
     data = request.get_json()
 
-    user = User.find_by_email(data["email"])
-
     if not data or not data.get("email"):
         return jsonify({"error": "Invalid input"}), 400
 
+    user = User.find_by_email(data["email"])
+
     if user is None:
         return jsonify({"error": "Email not found"}), 404
+
+    serializer = URLSafeTimedSerializer(Config.SECRET_KEY)
+    reset_token = serializer.dumps(user["email"], salt="password-reset-salt")
+
+    print("\n>>> simulating sending email: \n\n", reset_token)
 
     return (
         jsonify({"message": "Password reset link sent to your email"}),

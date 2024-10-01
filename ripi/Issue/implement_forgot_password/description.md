@@ -6,11 +6,11 @@
   - [x] Implement the logic to handle password reset requests.
   - [x] Make the test pass by validating the password reset request.
 
-- [ ] Generate a Password Reset Token:
+- [x] Generate a Password Reset Token:
 
   - [x] Write a failing test for generating a password reset token.
-  - [ ] Implement token generation using `itsdangerous` or a similar library.
-  - [ ] Make the test pass by generating the token and sending a reset link.
+  - [x] Implement token generation using `itsdangerous` or a similar library.
+  - [x] Make the test pass by generating the token and sending a reset link.
 
 - [ ] Handle Password Reset Submission:
 

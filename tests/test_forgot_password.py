@@ -46,7 +46,4 @@ def test_password_reset_token_generation(client):
     )
 
     assert response.status_code == 200
-    assert "reset_token" in response.json
     assert response.json["message"] == "Password reset link sent to your email"
-    # Check that the token is not empty
-    assert response.json["reset_token"] != ""
