@@ -6,11 +6,11 @@
   - [x] Implement the logic for user login.
   - [x] Make the test pass by validating user login.
 
-- [ ] Validate the user login input:
+- [x] Validate the user login input:
 
   - [x] Write a failing test for login input validation (e.g., email format, missing fields).
-  - [ ] Implement input validation for the login endpoint.
-  - [ ] Make the test pass by ensuring invalid input is rejected.
+  - [x] Implement input validation for the login endpoint.
+  - [x] Make the test pass by ensuring invalid input is rejected.
 
 - [ ] Verify the user's credentials:
 
