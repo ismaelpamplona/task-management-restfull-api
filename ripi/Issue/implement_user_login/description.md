@@ -20,6 +20,6 @@
 
 - [ ] Generate a JWT token for successful login:
 
-  - [ ] Write a failing test for generating a JWT token upon successful login.
+  - [x] Write a failing test for generating a JWT token upon successful login.
   - [ ] Implement JWT generation using `Flask-JWT-Extended` or a similar library.
   - [ ] Make the test pass by returning the JWT token on successful login.
