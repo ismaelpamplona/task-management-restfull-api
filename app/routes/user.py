@@ -1,5 +1,6 @@
 import re
 
+import bcrypt
 from flask import Blueprint, jsonify, request
 
 from app.models.user import User
@@ -29,6 +30,7 @@ def register_user():
     user = User(
         username=data["username"], email=data["email"], password=data["password"]
     )
+
     user_id = user.save_to_db()
 
     return (
@@ -43,4 +45,29 @@ def register_user():
             }
         ),
         201,
+    )
+
+
+@user_bp.route("/login", methods=["POST"])
+def login_user():
+    data = request.get_json()
+
+    if not data or not data.get("email") or not data.get("password"):
+        return jsonify({"error": "Invalid input"}), 400
+
+    user = User.find_by_email(data["email"])
+
+    if user is None or not bcrypt.checkpw(
+        data["password"].encode("utf-8"), user["password"].encode("utf-8")
+    ):
+        return jsonify({"error": "Invalid email or password"}), 401
+
+    return (
+        jsonify(
+            {
+                "message": "Login successful",
+                "access_token": "mocked_token",  # replace later
+            }
+        ),
+        200,
     )

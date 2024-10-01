@@ -1,8 +1,6 @@
 import sys
 from os.path import abspath, dirname
 
-import pytest
-
 from app import create_app
 
 sys.path.insert(0, abspath(dirname(dirname(__file__))))

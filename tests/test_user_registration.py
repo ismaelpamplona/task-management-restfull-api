@@ -16,6 +16,8 @@ def test_user_registration(client):
         },
     )
 
+    user = User.find_by_email("newuser@example.com")
+
     assert response.status_code == 201
     assert response.json["message"] == "User registered successfully"
     assert response.json["user"]["username"] == "newuser"
@@ -49,7 +51,6 @@ def test_user_registration_invalid_input(client):
 
 def test_password_is_hashed():
     user = User(username="test", email="test@example.com", password="plainpassword")
-    print(user.password)
     user.save_to_db()
 
     # Retrieve the inserted user
@@ -57,7 +58,6 @@ def test_password_is_hashed():
 
     assert inserted_user is not None
     # Check that the password is not stored in plain text
-    print(inserted_user["password"])
     assert inserted_user["password"] != "plainpassword"
     # Check that the hashed password matches the original password using bcrypt
     assert bcrypt.checkpw(

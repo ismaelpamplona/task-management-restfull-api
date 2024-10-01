@@ -1,3 +1,4 @@
+import os
 import sys
 from os.path import abspath, dirname
 
@@ -21,9 +22,19 @@ def client(app):
     with app.test_client() as client:
         yield client
 
-    # Cleanup: Connect to MongoDB and clear the test database
-    mongo_uri = app.config["MONGO_URI"]
+
+@pytest.fixture(autouse=True)
+def cleanup():
+    mongo_uri = os.getenv("MONGO_URI")
     client_mongo = MongoClient(mongo_uri)
-    db = client_mongo.get_database("task_management_test")
+    db = client_mongo.get_database("task_management")
+
+    # Cleanup before each test
     db.users.delete_many({})
+
+    yield  # Execute the test
+
+    # Cleanup after each test
+    db.users.delete_many({})
+
     client_mongo.close()
