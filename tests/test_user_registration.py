@@ -82,3 +82,33 @@ def test_user_login_invalid_input(client):
     response = client.post("/login", json={"email": "testuser@example.com"})
     assert response.status_code == 400
     assert response.json["error"] == "Invalid input"
+
+
+def test_user_login_incorrect_credentials(client):
+    # First, register a user to test login functionality
+    client.post(
+        "/register",
+        json={
+            "username": "testuser",
+            "email": "testuser@example.com",
+            "password": "testpassword",
+        },
+    )
+
+    # Try logging in with an incorrect password
+    response = client.post(
+        "/login",
+        json={"email": "testuser@example.com", "password": "wrongpassword"},
+    )
+
+    assert response.status_code == 401
+    assert response.json["error"] == "Invalid email or password"
+
+    # Try logging in with an unregistered email
+    response = client.post(
+        "/login",
+        json={"email": "unregistered@example.com", "password": "testpassword"},
+    )
+
+    assert response.status_code == 401
+    assert response.json["error"] == "Invalid email or password"

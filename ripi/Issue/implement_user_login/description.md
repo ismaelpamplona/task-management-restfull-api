@@ -12,11 +12,11 @@
   - [x] Implement input validation for the login endpoint.
   - [x] Make the test pass by ensuring invalid input is rejected.
 
-- [ ] Verify the user's credentials:
+- [x] Verify the user's credentials:
 
-  - [ ] Write a failing test to check if the user's credentials are verified correctly.
-  - [ ] Implement credential verification logic (e.g., comparing hashed passwords).
-  - [ ] Make the test pass by confirming the login only succeeds with correct credentials.
+  - [x] Write a failing test to check if the user's credentials are verified correctly.
+  - [x] Implement credential verification logic (e.g., comparing hashed passwords).
+  - [x] Make the test pass by confirming the login only succeeds with correct credentials.
 
 - [ ] Generate a JWT token for successful login:
 

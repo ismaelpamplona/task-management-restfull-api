@@ -55,6 +55,10 @@ def login_user():
     if not data or not data.get("email") or not data.get("password"):
         return jsonify({"error": "Invalid input"}), 400
 
+    email_regex = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    if not re.match(email_regex, data["email"]):
+        return jsonify({"error": "Invalid email format"}), 400
+
     user = User.find_by_email(data["email"])
 
     if user is None or not bcrypt.checkpw(
