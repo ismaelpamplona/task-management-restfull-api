@@ -1,10 +1,10 @@
 # implement_forgot_password (Issue)
 
-- [ ] Set up the Forgot Password endpoint:
+- [x] Set up the Forgot Password endpoint:
 
   - [x] Write a failing test for requesting a password reset.
-  - [ ] Implement the logic to handle password reset requests.
-  - [ ] Make the test pass by validating the password reset request.
+  - [x] Implement the logic to handle password reset requests.
+  - [x] Make the test pass by validating the password reset request.
 
 - [ ] Generate a Password Reset Token:
 

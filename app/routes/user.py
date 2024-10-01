@@ -73,3 +73,21 @@ def login_user():
         jsonify({"message": "Login successful", "access_token": access_token}),
         200,
     )
+
+
+@user_bp.route("/forgot-password", methods=["POST"])
+def forgot_password():
+    data = request.get_json()
+
+    user = User.find_by_email(data["email"])
+
+    if not data or not data.get("email"):
+        return jsonify({"error": "Invalid input"}), 400
+
+    if user is None:
+        return jsonify({"error": "Email not found"}), 404
+
+    return (
+        jsonify({"message": "Password reset link sent to your email"}),
+        200,
+    )
